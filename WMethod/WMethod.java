@@ -1,6 +1,7 @@
 
 import java.io.*;
 import java.util.*;
+import org.*;
 
 /**
  * 
@@ -378,14 +379,16 @@ public class WMethod{
      TestingTree transitionCover = new TestingTree(FSM, numberOfStates); 
      // Generate P-tables and the W set (Section 5.5 in the textbook).
      pTableManager w = new pTableManager(FSM, numberOfStates, realInput);
+    
      Vector <String> tests=generateTests(transitionCover, w); // Generate tests.
      Utilities.printAllTestCases(tests); // Print tests.
-     for(int x=0;x<tests.size();x++){
+   //tests test cases
+    /* for(int x=0;x<tests.size();x++){
     	 String str=tests.elementAt(x);
     	 for(int y=1;y<str.length();y+=2){
     		 str=str.substring(0,y)+" "+str.substring(y,str.length());
     	 }
-    	 
+    	
     	 
     	 
     	 Utilities.runFSM(FSM, 1, str, " ");
@@ -394,6 +397,32 @@ public class WMethod{
     	 
     	 
      }
+  
+     */
+     
+     //finds out junit cases
+     for(int x=0;x<tests.size();x++){
+    	 System.out.println("@Test");
+    	 System.out.println("public void testCase" + x + "(){");
+    	 String str=tests.elementAt(x);
+    	
+    	 System.out.println("String str="+"\""+str.substring(0, str.length()-1)+"\";");
+    	 for(int y=1;y<str.length();y+=2){
+    		 str=str.substring(0,y)+" "+str.substring(y,str.length());
+    	 }
+    	 Utilities.runFSM(FSM, 1,str , " ");
+    	 
+    	 if(Utilities.outputPattern.contains("1")){
+    		 System.out.println("assertTrue(bondRegex(str));");
+    	 }
+    	 else{
+    		 System.out.println("assertFalse(bondRegex(str));"); 
+    	 }
+    	 
+    	 System.out.println("}");
+     }
+     
+     
      
      
      
