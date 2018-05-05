@@ -382,7 +382,7 @@ public class WMethod{
     
      Vector <String> tests=generateTests(transitionCover, w); // Generate tests.
      Utilities.printAllTestCases(tests); // Print tests.
-   //tests test cases
+   //(task 1)    tests test cases
     /* for(int x=0;x<tests.size();x++){
     	 String str=tests.elementAt(x);
     	 for(int y=1;y<str.length();y+=2){
@@ -400,7 +400,7 @@ public class WMethod{
   
      */
      
-     //finds out junit cases
+     //(Task3)finds out junit cases
      for(int x=0;x<tests.size();x++){
     	 System.out.println("@Test");
     	 System.out.println("public void testCase" + x + "(){");
@@ -427,7 +427,7 @@ public class WMethod{
      
      
      
-     //this below will calculate what the possible options are and make a desicion off of that not just add spaces
+     //(Task 1 a different way)this below will calculate what the possible options are and make a desicion off of that not just add spaces
      /* ArrayList<String> types=new ArrayList<String>();
     
      for(int x=0;x<FSM.length;x++){
